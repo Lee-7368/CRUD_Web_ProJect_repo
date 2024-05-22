@@ -13,7 +13,7 @@ const TodoList = () => {
   };
 
   const deleteTodo = (id) => {
-    const confirmDelete = window.confirm("정말로 삭제하시겠습니까?");
+    const confirmDelete = window.confirm("정말로 삭제하나요?");
     if (confirmDelete) {
       setTodos(todos.filter(todo => todo.id !== id));
     }
