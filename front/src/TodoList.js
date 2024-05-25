@@ -1,12 +1,9 @@
-
-
 import React, { useState } from 'react';
 import { DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
 import update from 'immutability-helper';
 import TodoItem from './TodoItem';
 import './TodoList.css';
-import DateTime from './DateTime';
 
 const TodoList = () => {
   const [todos, setTodos] = useState([]);
@@ -31,12 +28,11 @@ const TodoList = () => {
   };
 
   const toggleComplete = (id) => {
-        const updatedTodos = todos.map(todo =>
-          todo.id === id ? { ...todo, completed: !todo.completed } : todo
-        );
-        setTodos(updatedTodos);
-      };
-  
+    const updatedTodos = todos.map(todo =>
+      todo.id === id ? { ...todo, completed: !todo.completed } : todo
+    );
+    setTodos(updatedTodos);
+  };
 
   const startEditing = (id) => {
     setTodos(todos.map(todo =>
@@ -64,19 +60,19 @@ const TodoList = () => {
   return (
     <DndProvider backend={HTML5Backend}>
       <div className='todolist-container'>
-        <h1>Todo List</h1>
-
-        <form onSubmit={(e) => { e.preventDefault(); addTodo(); }}>
-          <input 
-            type="text" 
-            placeholder="Write your Todo." 
-            value={inputText}
-            onChange={(e) => setInputText(e.target.value)}
-          />
-          <button type="submit" disabled={!inputText.trim()}>Add</button>
-        </form>
-
-        <ul>
+        <div className='header'>
+          <h1>Todo List</h1>
+          <form onSubmit={(e) => { e.preventDefault(); addTodo(); }}>
+            <input 
+              type="text" 
+              placeholder="Write your Todo." 
+              value={inputText}
+              onChange={(e) => setInputText(e.target.value)}
+            />
+            <button type="submit" disabled={!inputText.trim()}>Add</button>
+          </form>
+        </div>
+        <ul className='todo-scroll'>
           {todos
             .sort((a, b) => a.completed - b.completed)
             .map((todo, index) => (
@@ -91,9 +87,8 @@ const TodoList = () => {
               />
           ))}
         </ul>
-
         {todos.some(todo => todo.completed) && (
-          <button onClick={deleteCheckedItems}>Delete Checked Items</button>
+          <button className="fixed-buttons" onClick={deleteCheckedItems}>Delete Checked Items</button>
         )}
       </div>
     </DndProvider>
@@ -101,4 +96,3 @@ const TodoList = () => {
 };
 
 export default TodoList;
-
