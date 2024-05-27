@@ -9,7 +9,8 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/todos")
-public class TodoController {
+@CrossOrigin(origins = "http://localhost:3000")
+public class TodoController{
 
     @Autowired
     private TodoRepository todoRepository;
