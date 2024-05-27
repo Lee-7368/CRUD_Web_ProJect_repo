@@ -78,7 +78,7 @@
 //             </button>
 //           </div>
 //         </div>
-      
+
 //       </li>
 //     </div>
 //   );
@@ -126,47 +126,47 @@ const TodoItem = ({ todo, index, moveTodo, toggleComplete, startEditing, saveTod
   };
 
   return (
-    <div className="todo-scroll">
-      <li ref={ref} className={todo.completed ? 'completed' : ''} style={{ opacity: isDragging ? 0.5 : 1 }}>
-        <div className="round">
-          <input 
-            type="checkbox" 
-            id={`todo-${todo.id}`} 
-            checked={todo.completed} 
-            onChange={() => toggleComplete(todo.id)}
-          />
-          <label htmlFor={`todo-${todo.id}`}></label>
-        </div>
-        <div className="todo-content">
-          {todo.isEditing ? (
+      <div className="todo-scroll">
+        <li ref={ref} className={todo.completed ? 'completed' : ''} style={{ opacity: isDragging ? 0.5 : 1 }}>
+          <div className="round">
             <input
-              type="text"
-              value={editText}
-              onChange={(e) => setEditText(e.target.value)}
-              onKeyDown={(e) => {
-                if (e.key === 'Enter') {
-                  handleSaveClick();
-                }
-              }}
-              autoFocus
+                type="checkbox"
+                id={`todo-${todo.id}`}
+                checked={todo.completed}
+                onChange={() => toggleComplete(todo.id)}
             />
-          ) : (
-            <span>{todo.text}</span>
-          )}
-        </div>
-        <div className="todo-actions">
-          <button onClick={() => {
-            if (todo.isEditing) {
-              handleSaveClick();
-            } else {
-              startEditing(todo.id);
-            }
-          }}>
-            {todo.isEditing ? 'Save' : 'Edit'}
-          </button>
-        </div>
-      </li>
-    </div>
+            <label htmlFor={`todo-${todo.id}`}></label>
+          </div>
+          <div className="todo-content">
+            {todo.isEditing ? (
+                <input
+                    type="text"
+                    value={editText}
+                    onChange={(e) => setEditText(e.target.value)}
+                    onKeyDown={(e) => {
+                      if (e.key === 'Enter') {
+                        handleSaveClick();
+                      }
+                    }}
+                    autoFocus
+                />
+            ) : (
+                <span>{todo.text}</span>
+            )}
+          </div>
+          <div className="todo-actions">
+            <button onClick={() => {
+              if (todo.isEditing) {
+                handleSaveClick();
+              } else {
+                startEditing(todo.id);
+              }
+            }}>
+              {todo.isEditing ? 'Save' : 'Edit'}
+            </button>
+          </div>
+        </li>
+      </div>
   );
 };
 
