@@ -1,17 +1,18 @@
 import React from 'react';
-import TodoList from './TodoList';
-import DateTime from './DateTime';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import TodoList from './components/TodoList';
 
-
-function App() {
-
+const App = () => {
     return (
-        <div className="App">
-            <DateTime/>
-            <TodoList/>
-
-        </div>
+        <Router>
+            <div>
+                <Switch>
+                    <Route path="/todos" component={TodoList} />
+                    <Route path="/" component={TodoList} />
+                </Switch>
+            </div>
+        </Router>
     );
-}
+};
 
 export default App;
