@@ -5,7 +5,6 @@ import './App.css';
 function App() {
     const [tasks, setTasks] = useState([]);
     const [title, setTitle] = useState('');
-    const [description, setDescription] = useState('');
 
     useEffect(() => {
         fetchTasks();
@@ -21,16 +20,14 @@ function App() {
     };
 
     const addTask = async () => {
-        if (title && description) {
+        if (title) {
             try {
                 const response = await axios.post('http://localhost:8080/api/todos', {
                     title,
-                    description,
                     completed: false,
                 });
                 setTasks([...tasks, response.data]);
                 setTitle('');
-                setDescription('');
             } catch (error) {
                 console.error('Error adding task:', error);
             }
@@ -71,19 +68,12 @@ function App() {
                         value={title}
                         onChange={(e) => setTitle(e.target.value)}
                     />
-                    <input
-                        type="text"
-                        placeholder="Description"
-                        value={description}
-                        onChange={(e) => setDescription(e.target.value)}
-                    />
                     <button onClick={addTask}>Add Task</button>
                 </div>
                 <ul>
                     {tasks.map(task => (
                         <li key={task.id} className={task.completed ? 'completed' : ''}>
                             <span>{task.title}</span>
-                            <span>{task.description}</span>
                             <button onClick={() => handleComplete(task)}>
                                 {task.completed ? 'Undo' : 'Complete'}
                             </button>
