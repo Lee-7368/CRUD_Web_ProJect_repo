@@ -11,8 +11,8 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 800px;  
-  height: 700px;  
+  width: 800px;
+  height: 700px;
   padding: 0 20px 20px 20px;
   border-radius: 8px;
   background-color: #FFF;
@@ -50,8 +50,8 @@ ul.todo-scroll {
   padding: 0;
   width: 100%;
   max-height: 400px;
-  overflow-x: hidden; 
-  overflow-y: auto; 
+  overflow-x: hidden;
+  overflow-y: auto;
   margin: 0;
   box-sizing: border-box;
 }
@@ -80,7 +80,7 @@ li.completed span {
 input[type="text"] {
   padding: 15px;
   margin-right: 5px;
-  width: calc(100% - 90px); 
+  width: calc(100% - 90px);
   border: 1px solid #ddd;
   border-radius: 4px;
 }
@@ -118,7 +118,7 @@ button:disabled {
 li div {
   display: flex;
   gap: 5px;
-} 
+}
 
 .round {
   position: relative;
@@ -172,7 +172,7 @@ li div {
 
 .todo-content {
   flex-grow: 1;
-  text-align: left; 
+  text-align: left;
   margin-left: 10px;
 }
 
