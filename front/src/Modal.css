@@ -11,6 +11,8 @@
     z-index: 1000; /* 다른 요소들보다 앞에 오도록 설정 */
   }
   
+
+  
   .modal-content {
     background-color: #fff;
     padding: 20px;
@@ -28,7 +30,7 @@
   }
   
   button {
-    padding: 8px 16px;
+    padding: 10px 16px;
     background-color: #8b171A;
     color: #fff;
     border: none;
