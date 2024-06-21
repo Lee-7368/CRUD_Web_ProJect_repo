@@ -9,6 +9,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/todos")
+@CrossOrigin(origins = "http://localhost:3000")
 public class TodoController {
 
     @Autowired
@@ -27,18 +28,15 @@ public class TodoController {
     @PutMapping("/{id}")
     public Todo updateTodo(@PathVariable Long id, @RequestBody Todo todoDetails) {
         Todo todo = todoRepository.findById(id).orElseThrow(() -> new RuntimeException("Todo not found"));
-
         todo.setTitle(todoDetails.getTitle());
         todo.setDescription(todoDetails.getDescription());
         todo.setCompleted(todoDetails.getCompleted());
-
         return todoRepository.save(todo);
     }
 
     @DeleteMapping("/{id}")
     public void deleteTodo(@PathVariable Long id) {
         Todo todo = todoRepository.findById(id).orElseThrow(() -> new RuntimeException("Todo not found"));
-
         todoRepository.delete(todo);
     }
 }
